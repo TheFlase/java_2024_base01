@@ -10,10 +10,20 @@ import java.util.Arrays;
 public class SelectSearch {
     public static void main(String[] args) {
         int[] array = {2,4,1,5,7};
+        System.out.println("排序前："+ Arrays.toString(array));
+//        selectSearch(array);
+        selectTionSort(array);
+        System.out.println("排序后："+ Arrays.toString(array));
+    }
+
+    /**
+     * 选择排序
+     * @param array
+     */
+    public static void selectSearch(int[] array){
         int minIndex = 0;
         int min = 0;
         Boolean changeFlag = false;
-        System.out.println("排序前："+ Arrays.toString(array));
         for(int i=0;i<array.length;i++){
             changeFlag = false;
             min = array[i];
@@ -32,6 +42,33 @@ public class SelectSearch {
                 array[minIndex] = temp;
             }
         }
-        System.out.println("排序后："+ Arrays.toString(array));
+    }
+
+    /**
+     * 选择排序
+     * @param array
+     */
+    public static void selectTionSort(int[] array){
+        for(int i=0;i<array.length;i++){
+            int minIndex = i;
+            for(int j=i;j<array.length;j++){
+                if(array[j]<array[minIndex]){
+                    minIndex = j;
+                }
+            }
+            swap(array,i,minIndex);
+        }
+    }
+
+    /**
+     * 交换数组的指定元素
+     * @param array
+     * @param i
+     * @param minIndex
+     */
+    private static void swap(int[] array, int i, int minIndex) {
+        int temp = array[i];
+        array[i] = array[minIndex];
+        array[minIndex] = temp;
     }
 }
