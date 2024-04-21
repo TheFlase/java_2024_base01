@@ -1,4 +1,4 @@
-package com.wgc.base;
+package com.wgc.base.selectionsort;
 
 import java.util.Arrays;
 
@@ -14,6 +14,16 @@ public class SelectSearch {
         selectSearch(array);
 //        selectTionSort(array);
         System.out.println("排序后："+ Arrays.toString(array));
+
+        Student A = new Student("张三", 12);
+        Student B = new Student("李四", 8);
+        Student C = new Student("王五", 15);
+        Student D = new Student("赵阳", 11);
+        Student[] stuArray = {A,B,C,D};
+        System.out.println("排序前："+ Arrays.toString(stuArray));
+//        selectSearch(stuArray);
+        selectTionSort(stuArray);
+        System.out.println("排序后："+ Arrays.toString(stuArray));
     }
 
     /**

@@ -1,4 +1,4 @@
-package com.wgc.base;
+package com.wgc.base.linearsort;
 
 import java.util.Arrays;
 
