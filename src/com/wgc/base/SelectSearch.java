@@ -7,7 +7,7 @@ import java.util.Arrays;
  * @Description //
  * @Date 2024/4/21
  **/
-public class QuicklySearch {
+public class SelectSearch {
     public static void main(String[] args) {
         int[] array = {2,4,1,5,7};
         int minIndex = 0;
