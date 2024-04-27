@@ -11,8 +11,9 @@ public class SelectSearch {
     public static void main(String[] args) {
         Integer[] array = {2,4,1,5,7};
         System.out.println("排序前："+ Arrays.toString(array));
-        selectSearch(array);
+//        selectSearch(array);
 //        selectTionSort(array);
+        selectSort2(array);
         System.out.println("排序后："+ Arrays.toString(array));
 
         Student A = new Student("张三", 12);
@@ -51,6 +52,23 @@ public class SelectSearch {
                 array[i] = array[minIndex];
                 array[minIndex] = temp;
             }
+        }
+    }
+
+    /**
+     * 选择排序方式3：倒序比较
+     * @param array
+     * @param <E>
+     */
+    public static <E extends Comparable> void selectSort2(E[] array){
+        for(int i=array.length-1;i>=0;i--){
+            int index=i;
+            for(int j=i;j>=0;j--){
+                if(array[index].compareTo(array[j])<0){
+                    index = j;
+                }
+            }
+            swap(array,index,i);
         }
     }
 
