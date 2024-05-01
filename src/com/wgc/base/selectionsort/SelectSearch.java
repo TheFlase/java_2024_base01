@@ -31,7 +31,7 @@ public class SelectSearch {
      * 选择排序
      * @param array
      */
-    public static <E extends Comparable> void selectSearch(E[] array){
+    public static <E extends Comparable<E>> void selectSearch(E[] array){
         int minIndex = 0;
         E min ;
         Boolean changeFlag = false;
@@ -60,7 +60,7 @@ public class SelectSearch {
      * @param array
      * @param <E>
      */
-    public static <E extends Comparable> void selectSort2(E[] array){
+    public static <E extends Comparable<E>> void selectSort2(E[] array){
         for(int i=array.length-1;i>=0;i--){
             int index=i;
             for(int j=i;j>=0;j--){
@@ -76,7 +76,7 @@ public class SelectSearch {
      * 选择排序
      * @param array
      */
-    public static <E extends Comparable> void selectTionSort(E[] array){
+    public static <E extends Comparable<E>> void selectTionSort(E[] array){
         for(int i=0;i<array.length;i++){
             int minIndex = i;
             for(int j=i;j<array.length;j++){

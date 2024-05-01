@@ -1,6 +1,7 @@
 package com.wgc.base.insertsort;
 
 import java.util.Arrays;
+import java.util.Random;
 
 /**
  * @Author wgc
@@ -9,10 +10,24 @@ import java.util.Arrays;
  **/
 public class InsertSort {
     public static void main(String[] args) {
-        Integer[] array = {2,4,1,8,7,5};
-        System.out.println("排序前："+ Arrays.toString(array));
-        insertSort(array);
-        System.out.println("排序后："+ Arrays.toString(array));
+//        Integer[] array = {2,4,1,8,7,5};
+        InsertSort insertSort = new InsertSort();
+        Integer[] longArray = insertSort.generateArray(100, 100);
+        System.out.println("排序前："+ Arrays.toString(longArray));
+        insertSort(longArray);
+        System.out.println("排序后："+ Arrays.toString(longArray));
+    }
+
+    public Integer[] generateArray(int endRange,int sizeOfElement){
+        Random random = new Random(endRange);
+        Integer[] result = new Integer[sizeOfElement];
+        for(int i=0;i<sizeOfElement;i++){
+            result[i] = random.nextInt(endRange);
+        }
+        return result;
+    }
+
+    public InsertSort() {
     }
 
     public static <E extends Comparable<E>> E[] insertSort(E[] array){
