@@ -15,15 +15,11 @@ public class InsertSort {
         System.out.println("排序后："+ Arrays.toString(array));
     }
 
-    public static <E extends Comparable> E[] insertSort(E[] array){
+    public static <E extends Comparable<E>> E[] insertSort(E[] array){
         for(int i=0;i<=array.length-1;i++){
             for(int j=i;j>0;j--){
-                if(j==0){
-                    continue;
-                }else {
-                    if(array[j].compareTo(array[j-1])<0){
-                        swap(array,j,j-1);
-                    }
+                if(array[j].compareTo(array[j-1])<0){
+                    swap(array,j,j-1);
                 }
             }
         }
