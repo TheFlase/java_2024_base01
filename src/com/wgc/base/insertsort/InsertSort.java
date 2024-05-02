@@ -11,10 +11,11 @@ import java.util.Random;
 public class InsertSort {
     public static void main(String[] args) {
         InsertSort insertSort = new InsertSort();
-        Integer[] intArray = insertSort.generateArray(10, 5);
+        Integer[] intArray = insertSort.generateArray(20, 5);
         System.out.println("排序前："+ Arrays.toString(intArray));
 //        insertSort(intArray);
-        insertSortByMoveElement(intArray);
+//        insertSortByMoveElement(intArray);
+        insertSelectionByMoveElementDemo(intArray);
         System.out.println("排序后："+ Arrays.toString(intArray));
     }
 
@@ -62,7 +63,7 @@ public class InsertSort {
             for(int j=i;j>0;j--){
                 if(array[j].compareTo(array[j-1])<0){
                     temp = array[j];
-                    array[j] = array[--j];
+                    array[j] = array[--j];// 或者 array[j] = array[j-1]
                 }else {
                     index = j;
                 }
@@ -73,6 +74,23 @@ public class InsertSort {
             System.out.println("第"+(i+1)+"次排序后，结果是："+Arrays.toString(array));
         }
         return array;
+    }
+
+    /**
+     * 插入排序：平移-demo
+     * @param array
+     * @param <E>
+     */
+    public static <E extends Comparable<E>> void insertSelectionByMoveElementDemo(E[] array){
+        for(int i=0;i<array.length;i++){
+            E temp = array[i];
+            int j;
+            // 相对与上面案例，技巧在于j定义可以放到for上面
+            for(j=i;j-1>=0 && temp.compareTo(array[j-1])<0;j--){
+                array[j] = array[j-1];
+            }
+            array[j] = temp;
+        }
     }
 
     /**
