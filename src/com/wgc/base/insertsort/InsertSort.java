@@ -10,12 +10,12 @@ import java.util.Random;
  **/
 public class InsertSort {
     public static void main(String[] args) {
-//        Integer[] array = {2,4,1,8,7,5};
         InsertSort insertSort = new InsertSort();
-        Integer[] longArray = insertSort.generateArray(100, 100);
-        System.out.println("排序前："+ Arrays.toString(longArray));
-        insertSort(longArray);
-        System.out.println("排序后："+ Arrays.toString(longArray));
+        Integer[] intArray = insertSort.generateArray(10, 5);
+        System.out.println("排序前："+ Arrays.toString(intArray));
+//        insertSort(intArray);
+        insertSortByMoveElement(intArray);
+        System.out.println("排序后："+ Arrays.toString(intArray));
     }
 
     public Integer[] generateArray(int endRange,int sizeOfElement){
@@ -30,6 +30,12 @@ public class InsertSort {
     public InsertSort() {
     }
 
+    /**
+     * 常规：第一次操作
+     * @param array
+     * @param <E>
+     * @return
+     */
     public static <E extends Comparable<E>> E[] insertSort(E[] array){
         for(int i=0;i<=array.length-1;i++){
             for(int j=i;j>0;j--){
@@ -39,6 +45,32 @@ public class InsertSort {
                     break;
                 }
             }
+        }
+        return array;
+    }
+
+    /**
+     * 常规：第二次操作，利用平移特性
+     * @param array
+     * @param <E>
+     * @return
+     */
+    public static <E extends Comparable<E>> E[] insertSortByMoveElement(E[] array){
+        for(int i=0;i<=array.length-1;i++){
+            E temp = null;
+            int index = 0;
+            for(int j=i;j>0;j--){
+                if(array[j].compareTo(array[j-1])<0){
+                    temp = array[j];
+                    array[j] = array[--j];
+                }else {
+                    index = j;
+                }
+            }
+            if(null != temp){
+                array[index] = temp;
+            }
+            System.out.println("第"+(i+1)+"次排序后，结果是："+Arrays.toString(array));
         }
         return array;
     }
