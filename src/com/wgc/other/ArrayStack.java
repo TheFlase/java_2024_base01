@@ -4,10 +4,10 @@ import java.util.Arrays;
 
 /**
  * @Author wgc
- * @Description // 栈结构
+ * @Description // 栈结构：基于数组实现
  * @Date 2024/5/6
  **/
-public class StackTest {
+public class ArrayStack {
 
     public static void main(String[] args) {
         StackByArray stackByArray = new StackByArray();
@@ -41,6 +41,7 @@ public class StackTest {
             if(null == curr){
                 curr = 0;
             }else if(curr > array.length-1){
+                // 扩容
                 Integer[] arrayNew = expansionArray(array);
                 arrayLength = arrayNew.length;
                 array = arrayNew;
