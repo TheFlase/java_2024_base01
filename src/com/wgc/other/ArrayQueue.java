@@ -67,4 +67,61 @@ public class ArrayQueue {
                 ", popIndex=" + popIndex +
                 '}';
     }
+
+    static class ArrayQueueDemo{
+        // 数组items,数组大小n
+        private String[] items;
+        private int n = 0;
+        // 队头下标
+        private int head;
+        // 队尾下标
+        private int tail;
+
+        public ArrayQueueDemo(int n) {
+            this.n = n;
+            items = new String[n];
+        }
+
+        public static void main(String[] args) {
+            ArrayQueueDemo queueDemo = new ArrayQueueDemo(1);
+            queueDemo.enqueue("a");
+            queueDemo.enqueue("b");
+            System.out.println("插入值后："+queueDemo.toString());
+            queueDemo.dequeue();
+            System.out.println("取值后："+queueDemo.toString());
+        }
+
+        // 入队
+        public boolean enqueue(String item){
+            if(tail == n){
+                // 队列已满
+                return false;
+            }
+            items[tail] = item;
+            tail++;
+            return true;
+        }
+
+        // 出队
+        public String dequeue(){
+            if (head == tail) {
+                // 队列已空
+                return null;
+            }
+            String item = items[head];
+            items[head] = null;
+            ++head;
+            return item;
+        }
+
+        @Override
+        public String toString() {
+            return "ArrayQueueDemo{" +
+                    "items=" + Arrays.toString(items) +
+                    ", n=" + n +
+                    ", head=" + head +
+                    ", tail=" + tail +
+                    '}';
+        }
+    }
 }
