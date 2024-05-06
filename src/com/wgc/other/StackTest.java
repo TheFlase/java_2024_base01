@@ -82,4 +82,39 @@ public class StackTest {
                     '}';
         }
     }
+
+    class ArrayStackDemo{
+        private String[] items;
+        // 栈的元素个数(下标)
+        private volatile int count;
+        // 栈的大小
+        private int n;
+
+        public ArrayStackDemo(int n) {
+            this.items = new String[n];
+            this.n = n;
+            // 初始化时设置栈的元素个数为0
+            this.count = 0;
+        }
+
+        public boolean push(String item){
+            if(count == n){
+                return false;
+            }
+            // 入栈，元素个数加1
+            items[count] = item;
+            ++ count;
+            return true;
+        }
+
+        public String pop(){
+            if(count == 0){
+                return null;
+            }
+            // 出栈，元素个数减1
+            String item = items[count - 1];
+            -- count;
+            return item;
+        }
+    }
 }
